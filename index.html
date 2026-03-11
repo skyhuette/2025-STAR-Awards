@@ -49,7 +49,7 @@
         padding: 10px 18px;
         margin: 5px;
         border-radius: 20px;
-        cursor: pointer;
+        cursor: default;
         transition: 0.2s;
         color: white;
     }
@@ -66,9 +66,9 @@
     /* Gallery Grid */
     .gallery {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 20px;
-        padding: 20px;
+        padding: 40px;
         max-width: 1100px;
         margin: auto;
     }
@@ -76,10 +76,10 @@
     /* Nominee Cards */
     .card {
         background: white;
-        padding: 20px;
+        padding: 40px;
         border-radius: 12px;
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+        transition: transform 0.2s, border-color 0.7s, box-shadow 0.7s;
         border: 3px solid transparent;
         position: relative;
         overflow: hidden;
@@ -92,14 +92,14 @@
     .card:hover::after {
         content: '🌟';
         position: absolute;
-        top: 20px;
+        top: 40px;
         right: 10px;
-        font-size: 2.5rem;
-        animation: twinkle 2s infinite alternate;
+        font-size: 2.1rem;
+        animation: twinkle 1.5s infinite alternate;
     }
 
     @keyframes twinkle {
-        from { opacity: 0.4; }
+        from { opacity: 0.3; }
         to { opacity: 1; }
     }
 
@@ -122,8 +122,8 @@
         right: -5px;
         background: gold;
         color: black;
-        padding: 10px 15px;
-        border-radius: 10px;
+        padding: 15px 15px;
+        border-radius: 20px;
         font-size: 0.8rem;
         font-weight: bold;
     }
@@ -148,12 +148,12 @@
     /* Confetti */
     .confetti-piece {
         position: absolute;
-        width: 14px;
-        height: 14px;
-        opacity: 0.9;
+        width: 20px;
+        height: 20px;
+        opacity: 0.5;
         background-color: gold;
         pointer-events: none;
-        animation: confetti-fall 800ms ease-out forwards;
+        animation: confetti-fall 1500ms ease-out forwards;
         clip-path: polygon(
             50% 0%,
             61% 35%,
@@ -170,7 +170,7 @@
 
     @keyframes confetti-fall {
         0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(60px) rotate(360deg); opacity: 0; }
+        100% { transform: translateY(180px) rotate(360deg); opacity: 0; }
     }
   </style>
 </head>
@@ -197,57 +197,283 @@
 
     <div class="card DedicatedService">
         <div class="category">Dedicated Service</div>
-        <div class="name">Jane Doe</div>
+        <div class="name">Barry Karnes</div>
+        <div class="desc">Nominated by Tek Lentine.</div>
+    </div>
+    
+       <div class="card DedicatedService">
+        <div class="category">Dedicated Service</div>
+        <div class="name">Edgar Wolf-Klammer</div>
+        <div class="desc">Nominated by Marcia Kawate.</div>
+    </div>
+    
+       <div class="card DedicatedService winner" onmouseenter="addConfetti(this)">
+        <div class="category">Dedicated Service</div>
+        <div class="name">WINNER</div>
         <div class="desc">Nominated by XYZ.</div>
     </div>
+    
+       <div class="card DedicatedService winner" onmouseenter="addConfetti(this)">
+        <div class="category">Dedicated Service</div>
+        <div class="name">WINNER 2</div>
+        <div class="desc">Nominated by XYZ.</div>
+    </div>
+    
+      <div class="card DedicatedService">
+        <div class="category">Dedicated Service</div>
+        <div class="name">J.R. Nerat</div>
+        <div class="desc">Nominated by Nicolette Weeks.</div>
+    </div>
+    
+        <div class="card DedicatedService">
+        <div class="category">Dedicated Service</div>
+        <div class="name">Kerry Bell</div>
+        <div class="desc">Nominated by Griff Edwards.</div>
+    </div>
+    
+     <div class="card DedicatedService">
+        <div class="category">Dedicated Service</div>
+        <div class="name">Larry Dischert</div>
+        <div class="desc">Nominated by Bahar Sammak, Andrea Gilders.</div>
+    </div>
+    
+       <div class="card DedicatedService">
+        <div class="category">Dedicated Service</div>
+        <div class="name">Michelle Andersen</div>
+        <div class="desc">Nominated by Anne Marie Jacobs.</div>
+    </div>
+   
+    <div class="card ImpactfulMemberoftheYear">
+        <div class="category">Impactful Member of the Year</div>
+        <div class="name">Alex Schraiber</div>
+        <div class="desc">Nominated by Meg Van Heirseele, Aimee Sinnott.</div>
+    </div>
 
+ <div class="card ImpactfulMemberoftheYear">
+        <div class="category">Impactful Member of the Year</div>
+        <div class="name">Brian Orr</div>
+        <div class="desc">Nominated by Laura Werner.</div>
+    </div>
+    
     <div class="card ImpactfulMemberoftheYear winner" onmouseenter="addConfetti(this)">
         <div class="category">Impactful Member of the Year</div>
-        <div class="name">Harry Potter</div>
+        <div class="name">WINNER</div>
         <div class="desc">Nominated by XYZ.</div>
+    </div>
+    
+    
+      <div class="card ImpactfulMemberoftheYear winner" onmouseenter="addConfetti(this)">
+        <div class="category">Impactful Member of the Year</div>
+        <div class="name">WINNER 2</div>
+        <div class="desc">Nominated by XYZ.</div>
+    </div>
+        <div class="card ImpactfulMemberoftheYear">
+        <div class="category">Impactful Member of the Year</div>
+        <div class="name">Christian Eder</div>
+        <div class="desc">Nominated by Jonette Herman.</div>
+    </div>
+    
+     <div class="card ImpactfulMemberoftheYear">
+        <div class="category">Impactful Member of the Year</div>
+        <div class="name">David Gerstetter</div>
+        <div class="desc">Nominated by Mitchell Gold.</div>
+    </div>
+    
+     <div class="card ImpactfulMemberoftheYear">
+        <div class="category">Impactful Member of the Year</div>
+        <div class="name">Jason R. Smith</div>
+        <div class="desc">Nominated by Haley Callahan.</div>
+    </div>
+    
+    
+        <div class="card ImpactfulMemberoftheYear">
+        <div class="category">Impactful Member of the Year</div>
+        <div class="name">Michael Pallet</div>
+        <div class="desc">Nominated by Sean McAlister.</div>
+    </div>
+    
+     <div class="card ImpactfulMemberoftheYear">
+        <div class="category">Impactful Member of the Year</div>
+        <div class="name">Nicholas Colapietro</div>
+        <div class="desc">Nominated by Sabrina Khrebtov.</div>
+    </div>
+    
+    
+          <div class="card ImpactfulMemberoftheYear">
+        <div class="category">Impactful Member of the Year</div>
+        <div class="name">Prasad Shankarappa</div>
+        <div class="desc">Nominated by Cindy Byrne, Derrick Martin.</div>
+    </div>
+    
+    
+      <div class="card ImpactfulMemberoftheYear">
+        <div class="category">Impactful Member of the Year</div>
+        <div class="name">Reginald (Reg) Phillips</div>
+        <div class="desc">Nominated by Nicolette Weeks.</div>
+    </div>
+    
+     <div class="card ImpactfulMemberoftheYear">
+        <div class="category">Impactful Member of the Year</div>
+        <div class="name">Robert Osborne</div>
+        <div class="desc">Nominated by Mitchell Gold.</div>
     </div>
 
     <div class="card ImpactfulMemberoftheYear">
         <div class="category">Impactful Member of the Year</div>
-        <div class="name">Ron Swanson</div>
-        <div class="desc">Nominated by XYZ.</div>
+        <div class="name">Rusty Tharp</div>
+        <div class="desc">Nominated by Alan McGrath.</div>
+    </div>
+    
+ 
+     <div class="card ImpactfulMemberoftheYear">
+        <div class="category">Impactful Member of the Year</div>
+        <div class="name">Scott Picco</div>
+        <div class="desc">Nominated by Susan Malohn, Aimee Sinnott.</div>
+    </div>
+    
+       <div class="card ImpactfulMemberoftheYear">
+        <div class="category">Impactful Member of the Year</div>
+        <div class="name">Stephen Kuscsik</div>
+        <div class="desc">Nominated by Hilal El Misilmani, Patrick Platteuw.</div>
+    </div>
+    
+     <div class="card ImpactfulMemberoftheYear">
+        <div class="category">Impactful Member of the Year</div>
+        <div class="name">Timothy Anderson</div>
+        <div class="desc">Nominated by Alan McGrath.</div>
     </div>
 
+    
     <div class="card CollaborativeCommittee">
         <div class="category">Collaborative Committee</div>
-        <div class="name">The Beatles</div>
-        <div class="desc">Nominated by XYZ.</div>
+        <div class="name">TC 875, Electric Dry Bath Heaters</div>
+        <div class="desc">Nominated by Hilal El Misilmani.</div>
+    </div>
+    
+      <div class="card CollaborativeCommittee">
+        <div class="category">Collaborative Committee</div>
+        <div class="name">TC 2941, Cybersecurity of Distributed Energy and Inverter-based Resources</div>
+        <div class="desc">Nominated by Haley Callahan.</div>
     </div>
     
     <div class="card CollaborativeCommittee">
         <div class="category">Collaborative Committee</div>
-        <div class="name">Muppets</div>
+        <div class="name">TC 5800, Battery Fire Containment Products</div>
+        <div class="desc">Nominated by Cindy Byrne, Madison Lee.</div>
+    </div>
+    
+        <div class="card CollaborativeCommittee">
+        <div class="category">Collaborative Committee</div>
+        <div class="name">TC 0746, Polymeric Materials</div>
+        <div class="desc">Nominated by Cindy Byrne, Derrick Martin.</div>
+    </div>
+    
+      <div class="card CollaborativeCommittee">
+        <div class="category">Collaborative Committee</div>
+        <div class="name">CANENA 61C, Safety of Refrigeration Appliances for Household and Commercial Use</div>
+        <div class="desc">Nominated by Alan McGrath.</div>
+    </div>
+    
+       <div class="card CollaborativeCommittee">
+        <div class="category">Collaborative Committee</div>
+        <div class="name">TC S700, ULC Standards Committee on Thermal Performance and Energy Use In The Built Enviornment</div>
+        <div class="desc">Nominated by Nicolette Weeks.</div>
+    </div>
+    
+    <div class="card CollaborativeCommittee">
+        <div class="category">Collaborative Committee</div>
+        <div class="name">TC S800A, ULC Standards Committee on Electric Utility Workplace Electrical Safety</div>
+        <div class="desc">Nominated by Mit Modi.</div>
+    </div>
+    
+    <div class="card CollaborativeCommittee winner" onmouseenter="addConfetti(this)">
+        <div class="category">Collaborative Committee</div>
+        <div class="name">TC 123 WINNER</div>
         <div class="desc">Nominated by XYZ.</div>
     </div>
     
-    <div class="card DedicatedService winner" onmouseenter="addConfetti(this)">
-        <div class="category">Dedicated Service</div>
-        <div class="name">John Doe</div>
-        <div class="desc">Nominated by XYZ.</div>
-    </div>
-
-    <div class="card ImpactfulNewContributor">
+    
+ <div class="card ImpactfulNewContributor">
         <div class="category">Impactful New Contributor</div>
-        <div class="name">Barbie</div>
+        <div class="name">Barbara Kessler</div>
+        <div class="desc">Nominated by Mit Modi.</div>
+    </div>
+
+   <div class="card ImpactfulNewContributor">
+        <div class="category">Impactful New Contributor</div>
+        <div class="name">David Pelton</div>
+        <div class="desc">Nominated by Nicolette Weeks.</div>
+    </div>
+    
+       <div class="card ImpactfulNewContributor">
+        <div class="category">Impactful New Contributor</div>
+        <div class="name">Diana Rodriguez</div>
+        <div class="desc">Nominated by Diana Rico.</div>
+    </div>
+    
+  <div class="card ImpactfulNewContributor">
+        <div class="category">Impactful New Contributor</div>
+        <div class="name">Melissa Lamson</div>
+        <div class="desc">Nominated by Christina Riemer, Leslie Malaki.</div>
+    </div>
+    
+     <div class="card ImpactfulNewContributor">
+        <div class="category">Impactful New Contributor</div>
+        <div class="name">Philip Escobedo</div>
+        <div class="desc">Nominated by Hilal El Misilmani, Caroline Treuthardt.</div>
+    </div>
+    
+       <div class="card ImpactfulNewContributor">
+        <div class="category">Impactful New Contributor</div>
+        <div class="name">Rebecca Le</div>
+        <div class="desc">Nominated by Madison Lee, Aimee Sinnott, Cindy Byrne.</div>
+    </div>
+    
+    
+     <div class="card ImpactfulNewContributor">
+        <div class="category">Impactful New Contributor</div>
+        <div class="name">Timo Harvia</div>
+        <div class="desc">Nominated by Hilal El Misilmani.</div>
+    </div>
+   
+    
+     <div class="card ImpactfulNewContributor winner" onmouseenter="addConfetti(this)">
+        <div class="category">Impactful New Contributor</div>
+        <div class="name">WINNER</div>
+        <div class="desc">Nominated by XYZ.</div>
+    </div>
+    
+      <div class="card ImpactfulNewContributor winner" onmouseenter="addConfetti(this)">
+        <div class="category">Impactful New Contributor</div>
+        <div class="name">WINNER 2</div>
         <div class="desc">Nominated by XYZ.</div>
     </div>
     
     <div class="card GlobalImpact">
         <div class="category">Global Impact</div>
-        <div class="name">Carmen Sandiego</div>
+        <div class="name">Bureau of Indian Standards (BIS)</div>
+        <div class="desc">Nominated by Dr. Swati Singh.</div>
+    </div>
+    
+    <div class="card GlobalImpact">
+        <div class="category">Global Impact</div>
+        <div class="name">Department of Trade and Industry- Bureau of Philippine Standards (DTI-BPS)</div>
+        <div class="desc">Nominated by Kolin Low.</div>
+    </div>
+    
+        <div class="card GlobalImpact winner" onmouseenter="addConfetti(this)">
+        <div class="category">Global Impact</div>
+        <div class="name">WINNER</div>
         <div class="desc">Nominated by XYZ.</div>
+    </div>
+    
+     <div class="card GlobalImpact">
+        <div class="category">Global Impact</div>
+        <div class="name">SCC</div>
+        <div class="desc">Nominated by Tricia Sena.</div>
     </div>
 
-    <div class="card ImpactfulNewContributor winner" onmouseenter="addConfetti(this)">
-        <div class="category">Impactful New Contributor</div>
-        <div class="name">Ken</div>
-        <div class="desc">Nominated by XYZ.</div>
-    </div>
+  
 
 </div>
 
@@ -258,7 +484,7 @@ function randomConfettiColor() {
 }
 
 function addConfetti(card) {
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 25; i++) {
         const confetti = document.createElement("div");
         confetti.classList.add("confetti-piece");
         confetti.style.backgroundColor = randomConfettiColor();
