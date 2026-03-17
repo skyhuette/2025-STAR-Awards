@@ -221,6 +221,39 @@
 }
     
     
+    /* Apply same effect on click */
+.card.active {
+    transform: translateY(-4px);
+}
+
+.card.active::after {
+    content: '🌟';
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    font-size: 2.1rem;
+    animation: twinkle 1.5s infinite alternate;
+}
+
+/* Winner active state */
+.winner.active {
+    border-color: gold;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+}
+
+.winner.active::after {
+    content: "Selected";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: gold;
+    color: black;
+    padding: 15px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+    
   </style>
 </head>
 
@@ -651,7 +684,17 @@ function filterCards(category, btn) {
 </script>
 
 
+<script>
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', function () {
+        // remove active from all cards (optional, for single-open behavior)
+        document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
 
+        // toggle this one
+        this.classList.toggle('active');
+    });
+});
+</script>
 
 </body>
 </html>
