@@ -275,6 +275,22 @@
     font-size: 0.8rem;
     font-weight: bold;
 }
+
+
+/* Make the Award Winners button stand out */
+button[data-key="winners"] {
+  background-color: #e6c200; /* gold */
+  color: white;               /* white text */
+  font-weight: bold;
+  transition: background-color 0.3s; /* smooth hover */
+}
+
+/* Hover effect for Award Winners button */
+button[data-key="winners"]:hover {
+  background-color: #00A451; /* ULSE green on hover */
+}
+
+
     
   </style>
 </head>
@@ -741,6 +757,10 @@ document.querySelectorAll('.card').forEach(card => {
     });
 });
 </script>
+
+
+</body>
+</html>
 
 
 </body>
