@@ -9,7 +9,29 @@
 
   <style>
   
-  
+
+#scrollTopBtn {
+  display: none; 
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #333; 
+  color: white;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 50%;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#scrollTopBtn:hover {
+  background-color: #555;
+  transform: scale(1.1);
+}
+
   
   
     body {
@@ -259,6 +281,8 @@
 
 <body>
 
+<button id="scrollTopBtn" title="Go to top">↑</button>
+
 <script>
   // --------------- Category descriptions ---------------
   const CATEGORY_DESCRIPTIONS = {
@@ -337,7 +361,7 @@
 
 <header>
     <h1>STAR Awards</h1>
-     <h2>🌟2025 Gallery of Nominees🌟</h2>
+    <h2>2025 Gallery of Nominees</h2>
     <p>Explore all nominees and selected winners</p>
 </header>
 
@@ -683,6 +707,28 @@ function filterCards(category, btn) {
 }
 </script>
 
+<script>
+  // Get the button
+  const scrollBtn = document.getElementById("scrollTopBtn");
+
+  // Show the button when user scrolls down 100px
+  window.onscroll = function() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+      scrollBtn.style.display = "block";
+    } else {
+      scrollBtn.style.display = "none";
+    }
+  };
+
+  // Scroll to top smoothly when clicked
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+</script>
+
 
 <script>
 document.querySelectorAll('.card').forEach(card => {
@@ -695,6 +741,7 @@ document.querySelectorAll('.card').forEach(card => {
     });
 });
 </script>
+
 
 </body>
 </html>
