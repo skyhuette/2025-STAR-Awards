@@ -253,10 +253,73 @@
     font-size: 0.8rem;
     font-weight: bold;
 }
+
+
+/* Back to Top Button */
+#backToTop {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background-color: #123A28;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 1001; /* above cards & filters */
+}
+
+/* Show state */
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Hover / focus states */
+#backToTop:hover,
+#backToTop:focus {
+  background-color: #00a451;
+  outline: none;
+  transform: translateY(-3px);
+}
     
   </style>
 </head>
 
+
+<button
+  id="backToTop"
+  aria-label="Back to top"
+  title="Back to top"
+>
+  ↑
+</button>
+
+
+<script>
+  const backToTopBtn = document.getElementById('backToTop');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  });
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
 <body>
 
 
@@ -609,86 +672,24 @@ function randomConfettiColor() {
 }
 
 function addConfetti(card) {
-    for (let i = 0; i < 25; i++) {
-        const confetti = document.createElement("div");
-        confetti.classList.add("confetti-piece");
-        confetti.style.backgroundColor = randomConfettiColor();
-        confetti.style.left = Math.random() * 100 + "%";
-        confetti.style.top = "0px";
-        const delay = Math.random() * 200;
-        confetti.style.animationDelay = delay + "ms";
-        card.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 900 + delay);
-        setCategoryDescription('all');
-    }
-}
+  for (let i = 0; i < 25; i++) {
+    const confetti = document.createElement("div");
+    confetti.classList.add("confetti-piece");
+    confetti.style.backgroundColor = randomConfettiColor();
+    confetti.style.left = Math.random() * 100 + "%";
+    confetti.style.top = "0px";
 
-</script>
+    const delay = Math.random() * 200;
+    confetti.style.animationDelay = delay + "ms";
 
-<script>
-  // Map of friendly descriptions for each category
-  const CATEGORY_DESCRIPTIONS = {
-    all: "Browse the full gallery of the 2025 year STAR Awards nominees.Thank you to all nominators who support this program and utilize it to recognize our stakeholders.",
-    DedicatedService: "Dedicated members nominated for outstanding perfromance, committed service length of 15+ years, advanacement of our mission, and enthusiasm when participating in our standards development process",
-    ImpactfulMemberoftheYear: "Members nominated for their leadership and advocacy, impacting the development of ULSE standards over the past year.",
-    ImpactfulNewContributor: "Recent members nominated for their early level of engagement and enthusiasm which demonstrates strong promise as a continuing contributor to ULSE standards development.",
-    GlobalImpact: "Nominated partners whose contributions positioned ULSE to further reach our mission through their advocacy, including increased organizational awareness and building or maintaining a positive reputation globally.",
-    CollaborativeCommittee: "Technical Committees nominated for their consistent collaboration, thought leadership, and distinctive impactful contributions to our standards in the last year.",
-    winners: "Congratulations to the 2025 selected award recipients for the STAR Awards!"
-  };
-
-  // Optional: friendly headings if you want to prepend a bold label
-  // const CATEGORY_TITLES = { ... };
-
-  function setCategoryDescription(key) {
-    const descEl = document.getElementById('category-desc');
-    if (!descEl) return;
-
-    const text = CATEGORY_DESCRIPTIONS[key] || "";
-    descEl.textContent = text;
-
-    // Simple reveal effect (class toggle)
-    descEl.classList.remove('is-visible');
-    // Force reflow so the animation re-triggers on quick switches
-    void descEl.offsetWidth;
-    if (text) descEl.classList.add('is-visible');
+    card.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 900 + delay);
   }
-
-function filterCards(category, btn) {
-  // Toggle active state on buttons
-  document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-
-  const cards = document.querySelectorAll('.gallery .card');
-
-  cards.forEach(card => {
-    const isWinner = card.classList.contains('winner');
-
-    let match = false;
-
-    // 1. Show everything
-    if (category === 'all') {
-      match = true;
-    }
-
-    // 2. Show ONLY winners for the winners filter
-    else if (category === 'winners') {
-      match = isWinner;
-    }
-
-    // 3. Category filters:
-    //    Match by data-category AND include winners in that category
-    else {
-      match = card.dataset.category === category;
-    }
-
-    card.style.display = match ? '' : 'none';
-  });
-
-  // Update the description bar
-  setCategoryDescription(category);
 }
+
 </script>
+
+
 
 
 <script>
@@ -705,3 +706,4 @@ document.querySelectorAll('.card').forEach(card => {
 
 </body>
 </html>
+
